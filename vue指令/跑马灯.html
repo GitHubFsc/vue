@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>跑马灯</title>
+		<script type="text/javascript" src="node_modules/_vue@2.6.10@vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{mag}}</h1>
+			<button @click="start">开始</button>
+			<button @click="stop">停止</button>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data(){
+					return{
+						mag:'我是广告',
+						Timer:null
+					}	
+				},
+				methods:{
+					start(){
+						if(this.Timer==null){
+							this.Timer=setInterval(()=>{
+								var one = this.mag.substring(0,1);
+								var two = this.mag.substring(1);
+								this.mag =two+one
+							},500)
+						}
+					},
+					stop(){
+						clearInterval(this.Timer);
+						this.Timer=null
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

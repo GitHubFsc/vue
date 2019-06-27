@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>vue添加css</title>
+	<script type="text/javascript" src="node_modules/_vue@2.6.10@vue/dist/vue.js"></script>
+	<style type="text/css">
+		.one{
+			border: 5px solid red;
+			color: red;
+			width: 200px;
+			text-align: center;
+			margin-bottom: 10px
+		}
+		.two{
+			font-size: 50px;
+			height: 200px;
+			line-height: 200px;
+		}
+		.text-danger {
+			background: #333;
+		}
+	</style>
+</head>
+<body>
+	<div id="div">
+		对象
+		<div :class="{one:flag,two:flag,'text-danger':flag}">内容</div>
+		对象
+		<div :class="flog">内容</div>
+		对象-计算
+		<div :class="classObject">内容</div>
+		
+		对象替换三目
+		<p :class="[{'one':flag}]">内容</p>
+		
+		数组
+		<div :class="['one', 'two']">内容</div>
+		 数组-替换
+		<div :class="[one,two]">内容</div>
+		数组-三目
+		<div :class="['flag'?'one':'two']">内容</div>
+		
+		
+
+		行内对象
+		<div :style="{ color:'red', fontSize:'50px' }">内容</div>
+		<div :style="{ color: activeColor, 'font-size': fontSize + 'px' }">内容</div>
+		<div :style="styleObject">内容</div>
+		行内数组
+		<div :style="[baseStyles,overridingStyles]">内容</div>
+	</div>
+   
+    <script type="text/javascript">
+    	var div = new Vue({
+    		el:'div',
+    		data(){
+    			return{
+    				flag:true,
+    				flog:{'one':true,'two':true,'text-danger':true},
+    				falg:{value:true,type:'fatal'},
+    				one:'one',
+    				two:'two',
+    				activeColor: 'red',
+					fontSize: 50, 
+					styleObject: { color: 'red','font-size': '50px'},
+				    baseStyles: {color: 'red',fontSize: '50px'},
+					overridingStyles: { 'font-weight': '800'}
+    			}
+    		},
+    		computed: {
+			    classObject: function () {
+			      return {
+			  		one: true,
+			        two: this.flag && !this.falg.value,
+			        'text-danger': this.falg.value && this.falg.type === 'fatal',
+			      }
+			    }
+			  }
+
+    	});
+    </script>
+</body>
+</html>

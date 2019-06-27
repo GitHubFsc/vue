@@ -1,0 +1,24 @@
+# 创建一个基于 webpack 模板的新项目
+$ vue init webpack 项目名
+# 这里需要进行一些配置，默认回车即可
+进入项目，安装并运行：
+
+$ cd 项目名
+$ cnpm install
+$ cnpm run dev
+ DONE  Compiled successfully in 4388ms
+
+> Listening at http://localhost:8080
+
+
+父传子
+
+<appfooter :对象别名='对象名'></appfooter>
+
+ /* props:['数组(对象)']
+ *  props:{
+ *    数组(对象):{
+ *        type:属性
+ * }
+ * */
+
